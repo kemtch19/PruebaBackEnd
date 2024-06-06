@@ -66,5 +66,23 @@ namespace Prueba.AddControllers
         return StatusCode(500, $"Error al traer las matriculas con id {id} en la fecha {date}: {ex.Message}");
       }
     }
+    [HttpGet, Route("teachers/Courses/{id}")]
+    public ActionResult<IEnumerable<Teacher>> TeacherCourses(int id)
+    {
+      var teacherCourses = _enrollmentRepository.TeacherCourses(id);
+
+      if (teacherCourses == null)
+      {
+        return BadRequest($"no encontrado");
+      }
+      try
+      {
+        return Ok(teacherCourses);
+      }
+      catch (Exception ex)
+      {
+        return StatusCode(500, $"Error al traer los cursos del profesor con id {id}: {ex.Message}");
+      }
+    }
   }
 }

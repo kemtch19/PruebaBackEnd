@@ -7,7 +7,7 @@ namespace Prueba.Models
     [Required]
     public int Id { get; set; }
     [Required]
-    public DateOnly? DateEnrollments { get; set; }
+    public DateOnly DateEnrollments { get; set; }
     [Required]
     public string? Status { get; set; }
     [Required]

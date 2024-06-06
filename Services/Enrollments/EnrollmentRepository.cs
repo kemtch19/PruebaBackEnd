@@ -43,8 +43,14 @@ namespace Prueba.Services
     // Endpoints Medios
     public IEnumerable<Enrollment> DateEnrollment(int id, DateOnly date)
     {
-      var dateEnrollment = _context.Enrollments.Include(s => s.Student).Include(c => c.Course).Where(c => c.DateEnrollments == date && c.Id==id);
+      var dateEnrollment = _context.Enrollments.Include(s => s.Student).Include(c => c.Course).Where(c => c.DateEnrollments == date && c.Id == id);
       return dateEnrollment;
+    }
+
+    public IEnumerable<Enrollment> TeacherCourses(int id)
+    {
+      var teacherCourses = _context.Enrollments.Include(s => s.CourseId).ToList();
+      return teacherCourses;
     }
   }
 }
